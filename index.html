@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civilization Co. — Iraq's Connectivity Backbone</title>
+  <meta name="description" content="Civilization Co. builds and operates Iraq's critical internet infrastructure — the country's only neutral IXP, powered by DE-CIX, satellite connectivity, data centers, and enterprise telecom solutions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap');
+
+    :root {
+      --civi-navy: #04223A;
+      --civi-navy2: #082F4C;
+      --civi-blue: #1D68FF;
+      --civi-cyan: #15BFFD;
+      --civi-amber: #FFC40D;
+      --civi-white: #FFFFFF;
+      --civi-light: #E8F4FC;
+      --civi-muted: rgba(255,255,255,0.55);
+      --civi-border: rgba(255,255,255,0.1);
+      --civi-card: rgba(255,255,255,0.04);
+      --civi-card-hover: rgba(255,255,255,0.07);
+    }
+
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .civi-root {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--civi-navy);
+      color: var(--civi-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Arabic mode */
+    html[lang="ar"] .civi-root {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* NAV */
+    .civi-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(4,34,58,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--civi-border);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .civi-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .civi-logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--civi-blue);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: -0.5px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .civi-logo-text {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      color: var(--civi-white);
+    }
+
+    .civi-logo-sub {
+      font-size: 9px;
+      font-weight: 400;
+      color: var(--civi-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .civi-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .civi-nav-links a {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--civi-muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .civi-nav-links a:hover,
+    .civi-nav-links a.active { color: var(--civi-white); }
+
+    .civi-nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .civi-lang {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--civi-muted);
+      border: 0.5px solid var(--civi-border);
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      background: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .civi-lang:hover { color: var(--civi-white); border-color: rgba(255,255,255,0.3); }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: 0.5px solid var(--civi-border);
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 1.5px;
+      background: var(--civi-muted);
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--civi-blue);
+      color: #fff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.03em;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.88; }
+
+    /* HERO */
+    .civi-hero {
+      min-height: 92vh;
+      background: linear-gradient(160deg, #04223A 0%, #061C30 55%, #04223A 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 2.5rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(29,104,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(29,104,255,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 60% 40%, black, transparent);
+      pointer-events: none;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(29,104,255,0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 680px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(29,104,255,0.12);
+      border: 0.5px solid rgba(29,104,255,0.35);
+      border-radius: 20px;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--civi-cyan);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--civi-cyan);
+      animation: pulse-dot 2s ease infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .hero-h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-h1-accent { color: var(--civi-cyan); }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--civi-muted);
+      max-width: 520px;
+      margin: 1.2rem 0 2rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--civi-white);
+      border: 0.5px solid rgba(255,255,255,0.3);
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
+
+    .btn-hero-primary {
+      background: var(--civi-blue);
+      color: #fff;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .btn-hero-primary:hover { opacity: 0.88; }
+
+    /* DE-CIX lockup in hero */
+    .decix-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 10px 16px;
+    }
+
+    .decix-logo-box {
+      background: #fff;
+      border-radius: 5px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #E30613;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .decix-text {
+      font-size: 11px;
+      color: var(--civi-muted);
+      line-height: 1.3;
+    }
+
+    .decix-text strong {
+      display: block;
+      color: var(--civi-white);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* STATS STRIP */
+    .stats-strip {
+      background: rgba(255,255,255,0.03);
+      border-top: 0.5px solid var(--civi-border);
+      border-bottom: 0.5px solid var(--civi-border);
+      padding: 1.8rem 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 0 0.5rem;
+      border-right: 0.5px solid var(--civi-border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--civi-cyan);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 10.5px;
+      color: var(--civi-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 500;
+      margin-top: 4px;
+      display: block;
+    }
+
+    /* SECTIONS */
+    .section { padding: 5rem 2.5rem; }
+    .section-alt { background: rgba(255,255,255,0.02); }
+
+    .section-eyebrow {
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--civi-cyan);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+    }
+
+    .section-body {
+      font-size: 14px;
+      color: var(--civi-muted);
+      max-width: 520px;
+      line-height: 1.75;
+    }
+
+    /* IXP MOAT SECTION */
+    .moat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .moat-map {
+      background: rgba(29,104,255,0.06);
+      border: 0.5px solid rgba(29,104,255,0.2);
+      border-radius: 14px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .moat-stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    .moat-stat-card {
+      background: rgba(29,104,255,0.09);
+      border: 0.5px solid rgba(29,104,255,0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+
+    .moat-stat-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--civi-cyan);
+      letter-spacing: -0.04em;
+      display: block;
+    }
+
+    .moat-stat-lbl {
+      font-size: 10.5px;
+      color: var(--civi-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 500;
+      margin-top: 2px;
+      display: block;
+    }
+
+    .networks-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.5rem;
+    }
+
+    .network-chip {
+      background: rgba(21,191,253,0.1);
+      border: 0.5px solid rgba(21,191,253,0.25);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--civi-cyan);
+    }
+
+    .quote-block {
+      border-left: 2px solid var(--civi-blue);
+      padding: 0.75rem 1rem;
+      margin-top: 1.5rem;
+      font-size: 13px;
+      color: var(--civi-muted);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    html[lang="ar"] .quote-block {
+      border-left: none;
+      border-right: 2px solid var(--civi-blue);
+    }
+
+    .quote-block cite {
+      display: block;
+      margin-top: 6px;
+      font-size: 11px;
+      font-style: normal;
+      font-weight: 600;
+      color: var(--civi-white);
+      letter-spacing: 0.03em;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 2.5rem;
+    }
+
+    .service-card {
+      background: var(--civi-card);
+      border: 0.5px solid var(--civi-border);
+      border-radius: 12px;
+      padding: 1.4rem;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      background: var(--civi-card-hover);
+      border-color: rgba(29,104,255,0.35);
+    }
+
+    .service-icon {
+      width: 38px;
+      height: 38px;
+      background: rgba(29,104,255,0.14);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--civi-cyan);
+      font-size: 18px;
+    }
+
+    .service-title {
+      font-size: 13.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .service-body {
+      font-size: 12px;
+      color: var(--civi-muted);
+      line-height: 1.6;
+    }
+
+    .service-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      color: var(--civi-blue);
+      font-weight: 600;
+      margin-top: 10px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    /* STARLINK BAND */
+    .starlink-band {
+      background: linear-gradient(135deg, rgba(29,104,255,0.12) 0%, rgba(21,191,253,0.07) 100%);
+      border-top: 0.5px solid rgba(29,104,255,0.25);
+      border-bottom: 0.5px solid rgba(29,104,255,0.25);
+      padding: 3.5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .starlink-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    .starlink-sub {
+      font-size: 13px;
+      color: var(--civi-muted);
+      max-width: 540px;
+      line-height: 1.65;
+    }
+
+    .starlink-services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1.2rem;
+    }
+
+    .service-pill {
+      background: rgba(255,255,255,0.07);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.75);
+      font-weight: 500;
+    }
+
+    .starlink-cta-col {
+      text-align: center;
+      min-width: 180px;
+    }
+
+    .starlink-speed {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--civi-cyan);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+
+    .starlink-speed-label {
+      font-size: 11px;
+      color: var(--civi-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* INDUSTRIES */
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 2.5rem;
+    }
+
+    .industry-card {
+      background: var(--civi-card);
+      border: 0.5px solid var(--civi-border);
+      border-radius: 10px;
+      padding: 1.1rem 1rem;
+      transition: border-color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
+
+    .industry-card:hover {
+      border-color: rgba(21,191,253,0.35);
+      background: var(--civi-card-hover);
+    }
+
+    .industry-icon {
+      font-size: 20px;
+      color: var(--civi-cyan);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .industry-name {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .industry-desc {
+      font-size: 11px;
+      color: var(--civi-muted);
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    /* PARTNERS */
+    .partners-section { padding: 4rem 2.5rem; }
+
+    .partners-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--civi-muted);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .partners-row { margin-bottom: 2rem; }
+
+    .partners-tier-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--civi-muted);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 0.5px solid var(--civi-border);
+    }
+
+    .partners-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .partner-chip {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(255,255,255,0.1);
+      border-radius: 7px;
+      padding: 7px 16px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.04em;
+    }
+
+    .partner-chip.strategic {
+      border-color: rgba(29,104,255,0.4);
+      color: rgba(255,255,255,0.9);
+      background: rgba(29,104,255,0.1);
+    }
+
+    .partner-chip.golden {
+      border-color: rgba(255,196,13,0.35);
+      color: var(--civi-amber);
+      background: rgba(255,196,13,0.07);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 2.5rem;
+    }
+
+    .project-card {
+      background: var(--civi-card);
+      border: 0.5px solid var(--civi-border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .project-card:hover { border-color: rgba(29,104,255,0.35); }
+
+    .project-img {
+      height: 110px;
+      background: linear-gradient(135deg, rgba(29,104,255,0.18) 0%, rgba(4,34,58,0.9) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: rgba(29,104,255,0.6);
+    }
+
+    .project-body { padding: 1rem; }
+
+    .project-tag {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--civi-amber);
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .project-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .project-desc {
+      font-size: 11px;
+      color: var(--civi-muted);
+      line-height: 1.55;
+    }
+
+    /* CERTS */
+    .certs-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cert-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 12px 18px;
+    }
+
+    .cert-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 7px;
+      background: rgba(29,104,255,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--civi-cyan);
+      flex-shrink: 0;
+    }
+
+    .cert-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--civi-white);
+      letter-spacing: 0.03em;
+    }
+
+    .cert-desc {
+      font-size: 10px;
+      color: var(--civi-muted);
+      margin-top: 1px;
+    }
+
+    /* CTA BAND */
+    .cta-band {
+      background: linear-gradient(135deg, #0F3F6E 0%, #082F4C 100%);
+      border-top: 0.5px solid rgba(29,104,255,0.3);
+      padding: 4rem 2.5rem;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-band p {
+      font-size: 14px;
+      color: var(--civi-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* CONTACT */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      align-items: start;
+    }
+
+    .contact-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-card {
+      background: var(--civi-card);
+      border: 0.5px solid var(--civi-border);
+      border-radius: 12px;
+      padding: 1.4rem;
+    }
+
+    .contact-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--civi-muted);
+      margin-bottom: 8px;
+    }
+
+    .contact-value {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--civi-white);
+      line-height: 1.5;
+    }
+
+    .contact-icon {
+      font-size: 20px;
+      color: var(--civi-blue);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    /* CONTACT FORM */
+    .contact-form-wrap {
+      background: var(--civi-card);
+      border: 0.5px solid var(--civi-border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+
+    .form-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--civi-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(255,255,255,0.15);
+      border-radius: 7px;
+      padding: 9px 13px;
+      font-size: 12.5px;
+      color: var(--civi-white);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: rgba(29,104,255,0.55);
+    }
+
+    .form-group select option {
+      background: #04223A;
+      color: #fff;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .form-submit-btn {
+      background: var(--civi-blue);
+      color: #fff;
+      border: none;
+      padding: 11px 28px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .form-submit-btn:hover { opacity: 0.88; }
+
+    /* FOOTER */
+    .civi-footer {
+      background: #021827;
+      border-top: 0.5px solid var(--civi-border);
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.5;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-lang-btn {
+      font-size: 11px;
+      color: rgba(255,255,255,0.35);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      transition: color 0.2s;
+    }
+
+    .footer-lang-btn:hover { color: rgba(255,255,255,0.7); }
+
+    /* Iraq SVG Map mini */
+    .iraq-map-svg {
+      width: 100%;
+      height: auto;
+      opacity: 0.75;
+    }
+
+    /* Tech links */
+    .tech-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      color: var(--civi-blue);
+      font-weight: 600;
+      text-decoration: none;
+      border: 0.5px solid rgba(29,104,255,0.3);
+      border-radius: 5px;
+      padding: 5px 12px;
+      margin-top: 12px;
+      transition: background 0.15s;
+    }
+
+    .tech-link:hover { background: rgba(29,104,255,0.1); }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 2rem;
+    }
+
+    .pillar {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .pillar-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(29,104,255,0.14);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: var(--civi-cyan);
+      flex-shrink: 0;
+    }
+
+    .pillar-title {
+      font-size: 12.5px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .pillar-body {
+      font-size: 11px;
+      color: var(--civi-muted);
+      line-height: 1.55;
+    }
+
+    /* ============================================
+       RESPONSIVE — Tablet (768px – 1023px)
+    ============================================ */
+    @media (max-width: 1023px) and (min-width: 768px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); }
+      .moat-grid { grid-template-columns: 1fr; }
+      .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillar-grid[style*="3"] { grid-template-columns: repeat(2, 1fr) !important; }
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================
+       RESPONSIVE — Mobile (<768px)
+    ============================================ */
+    @media (max-width: 767px) {
+      .civi-nav { padding: 0 1.2rem; }
+
+      .civi-nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(4,34,58,0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 0.5px solid var(--civi-border);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0.5rem 0;
+        z-index: 99;
+      }
+
+      .civi-nav-links.open { display: flex; }
+
+      .civi-nav-links li { width: 100%; }
+
+      .civi-nav-links a {
+        display: block;
+        padding: 12px 1.5rem;
+        font-size: 13px;
+        border-bottom: 0.5px solid rgba(255,255,255,0.04);
+      }
+
+      .nav-hamburger { display: flex; }
+
+      .civi-hero { padding: 4rem 1.2rem 2.5rem; min-height: 80vh; }
+      .hero-subtitle { font-size: 13px; }
+      .hero-ctas { gap: 8px; }
+      .btn-hero-primary, .btn-outline { font-size: 12px; padding: 9px 16px; }
+
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 1.2rem 1.2rem;
+      }
+
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(4) { border-right: none; }
+      .stat-item { border-bottom: 0.5px solid var(--civi-border); padding-bottom: 1rem; }
+      .stat-item:nth-child(5) { grid-column: span 2; border-bottom: none; border-right: none; }
+
+      .section { padding: 3rem 1.2rem; }
+
+      .moat-grid { grid-template-columns: 1fr; gap: 2rem; margin-top: 2rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .industries-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .starlink-band {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 1.2rem;
+      }
+
+      .starlink-cta-col { text-align: left; }
+
+      .pillar-grid { grid-template-columns: 1fr; }
+      .pillar-grid[style*="3"] { grid-template-columns: 1fr !important; }
+
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .cta-band { padding: 3rem 1.2rem; }
+      .cta-band h2 { font-size: 1.5rem; }
+
+      .civi-footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.2rem; }
+      .partners-section { padding: 3rem 1.2rem; }
+
+      .moat-stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* RTL adjustments */
+    html[dir="rtl"] .civi-nav-links {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .hero-content {
+      text-align: right;
+    }
+
+    html[dir="rtl"] .hero-ctas {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .decix-lockup {
+      flex-direction: row-reverse;
+    }
+
+    html[dir="rtl"] .stat-item {
+      border-right: none;
+      border-left: 0.5px solid var(--civi-border);
+    }
+
+    html[dir="rtl"] .stat-item:last-child { border-left: none; }
+
+    @media (max-width: 767px) {
+      html[dir="rtl"] .civi-nav-links {
+        align-items: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="civi-root" id="civiRoot">
+
+  <!-- NAV -->
+  <nav class="civi-nav" id="civiNav">
+    <a href="#" class="civi-logo" aria-label="Civilization Co. Home">
+      <div class="civi-logo-mark">CC</div>
+      <div>
+        <div class="civi-logo-text" data-en="Civilization Co." data-ar="شركة الحضارة">Civilization Co.</div>
+        <div class="civi-logo-sub" data-en="Telecom · Internet · IT" data-ar="اتصالات · إنترنت · تقنية">Telecom · Internet · IT</div>
+      </div>
+    </a>
+
+    <ul class="civi-nav-links" id="navLinks">
+      <li><a href="#about" data-en="About" data-ar="عن الشركة">About</a></li>
+      <li><a href="#solutions" data-en="Solutions" data-ar="الحلول">Solutions</a></li>
+      <li><a href="#ixp" data-en="IRAQ-IXP" data-ar="البورصة العراقية">IRAQ-IXP</a></li>
+      <li><a href="#industries" data-en="Industries" data-ar="القطاعات">Industries</a></li>
+      <li><a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a></li>
+      <li><a href="#partners" data-en="Partners" data-ar="الشركاء">Partners</a></li>
+    </ul>
+
+    <div class="civi-nav-right">
+      <button class="civi-lang" id="langToggle" aria-label="Switch language">عـربي</button>
+      <button class="btn-primary" data-en="Partner with us" data-ar="شاركنا">Partner with us</button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="civi-hero" id="about">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        <span data-en="Iraq's only Internet Exchange Point" data-ar="نقطة تبادل الإنترنت الوحيدة في العراق">Iraq's only Internet Exchange Point</span>
+      </div>
+      <h1 class="hero-h1">
+        <span data-en="Iraq's" data-ar="عمود">Iraq's</span><br>
+        <span class="hero-h1-accent" data-en="Connectivity" data-ar="الاتصال">Connectivity</span><br>
+        <span data-en="Backbone." data-ar="في العراق.">Backbone.</span>
+      </h1>
+      <p class="hero-subtitle" data-en="Civilization Co. builds and operates Iraq's critical internet infrastructure — the country's only neutral IXP, powered by DE-CIX, interconnecting global networks to every corner of Iraq." data-ar="شركة الحضارة تبني وتشغّل البنية التحتية الحيوية للإنترنت في العراق — نقطة تبادل الإنترنت المحايدة الوحيدة في البلاد، مدعومة بشراكة DE-CIX، لتربط الشبكات العالمية بكل أنحاء العراق.">
+        Civilization Co. builds and operates Iraq's critical internet infrastructure — the country's only neutral IXP, powered by DE-CIX, interconnecting global networks to every corner of Iraq.
+      </p>
+      <div class="hero-ctas">
+        <button class="btn-hero-primary" data-en="Enterprise Solutions →" data-ar="حلول المؤسسات →">Enterprise Solutions →</button>
+        <button class="btn-outline" data-en="Satellite Connectivity" data-ar="اتصال الأقمار الصناعية">Satellite Connectivity</button>
+        <button class="btn-outline" data-en="Join the IXP" data-ar="انضم إلى البورصة">Join the IXP</button>
+      </div>
+      <div class="decix-lockup">
+        <div class="decix-logo-box">DE-CIX</div>
+        <div class="decix-text">
+          <strong data-en="Strategic Partner" data-ar="شريك استراتيجي">Strategic Partner</strong>
+          <span data-en="IRAQ-IXP powered by DE-CIX · Baghdad" data-ar="بورصة العراق للإنترنت مدعومة بـ DE-CIX · بغداد">IRAQ-IXP powered by DE-CIX · Baghdad</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip" id="statsStrip">
+    <div class="stat-item">
+      <span class="stat-number" data-target-text="#1" data-raw="#1">#1</span>
+      <span class="stat-label" data-en="Only neutral IXP in Iraq" data-ar="نقطة التبادل المحايدة الوحيدة في العراق">Only neutral IXP in Iraq</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target-text="3rd" data-raw="3rd">3rd</span>
+      <span class="stat-label" data-en="Largest IX in Middle East" data-ar="الأكبر في الشرق الأوسط">Largest IX in Middle East</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="28" data-suffix="+">28+</span>
+      <span class="stat-label" data-en="Connected global networks" data-ar="شبكة عالمية متصلة">Connected global networks</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="180">180</span>
+      <span class="stat-label" data-en="Gbit/s peak traffic" data-ar="جيجابت/ثانية ذروة البيانات">Gbit/s peak traffic</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number" data-target="8">8</span>
+      <span class="stat-label" data-en="Border interconnections" data-ar="ربط حدودي">Border interconnections</span>
+    </div>
+  </div>
+
+  <!-- IXP MOAT SECTION -->
+  <section class="section" id="ixp">
+    <div class="section-eyebrow" data-en="Our competitive moat" data-ar="ميزتنا التنافسية">Our competitive moat</div>
+    <div class="section-title" data-en="Iraq's internet, built<br>and operated by us." data-ar="إنترنت العراق،<br>بنيناه وندير تشغيله.">Iraq's internet, built<br>and operated by us.</div>
+    <div class="section-body" data-en="IRAQ-IXP, live since February 2024, is the first and only neutral Internet Exchange Point in Iraq — operated under DE-CIX's DaaS model, hosted in the Iraq Connectivity Gateway data center, Baghdad." data-ar="بورصة العراق للإنترنت، منذ فبراير 2024، هي أول نقطة تبادل إنترنت محايدة في العراق — تعمل وفق نموذج DaaS من DE-CIX، ومستضافة في مركز بيانات بوابة الاتصال العراقي في بغداد.">
+      IRAQ-IXP, live since February 2024, is the first and only neutral Internet Exchange Point in Iraq — operated under DE-CIX's DaaS model, hosted in the Iraq Connectivity Gateway data center, Baghdad.
+    </div>
+
+    <div class="moat-grid">
+      <div>
+        <div class="moat-stats-grid">
+          <div class="moat-stat-card">
+            <span class="moat-stat-num">~180</span>
+            <span class="moat-stat-lbl" data-en="Gbit/s peak traffic" data-ar="جيجابت/ثانية ذروة">Gbit/s peak traffic</span>
+          </div>
+          <div class="moat-stat-card">
+            <span class="moat-stat-num">28+</span>
+            <span class="moat-stat-lbl" data-en="Connected networks" data-ar="شبكة متصلة">Connected networks</span>
+          </div>
+          <div class="moat-stat-card">
+            <span class="moat-stat-num">6</span>
+            <span class="moat-stat-lbl" data-en="Iraqi provinces" data-ar="محافظة عراقية">Iraqi provinces</span>
+          </div>
+          <div class="moat-stat-card">
+            <span class="moat-stat-num">4</span>
+            <span class="moat-stat-lbl" data-en="Tier data centers" data-ar="مراكز بيانات">Tier data centers</span>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem;">
+          <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--civi-muted); margin-bottom:8px;" data-en="Networks connected include" data-ar="الشبكات المتصلة تشمل">Networks connected include</div>
+          <div class="networks-strip">
+            <span class="network-chip">Meta</span>
+            <span class="network-chip">Akamai</span>
+            <span class="network-chip">Tencent</span>
+            <span class="network-chip">Lumen / Level 3</span>
+            <span class="network-chip">Telia</span>
+            <span class="network-chip">UAE-IX</span>
+            <span class="network-chip">BIX</span>
+            <span class="network-chip">Telepoint</span>
+            <span class="network-chip" data-en="+ more" data-ar="+ المزيد">+ more</span>
+          </div>
+        </div>
+
+        <div class="quote-block">
+          <span data-en='"From the beginning, our vision was clear — to position Iraq as a digital hub for the region. Becoming the 3rd-largest Internet Exchange in the Middle East in just one year validates that vision."' data-ar='"منذ البداية، كانت رؤيتنا واضحة — تحويل العراق إلى مركز رقمي للمنطقة. أن نصبح ثالث أكبر بورصة إنترنت في الشرق الأوسط خلال عام واحد يثبت صحة هذه الرؤية."'>"From the beginning, our vision was clear — to position Iraq as a digital hub for the region. Becoming the 3rd-largest Internet Exchange in the Middle East in just one year validates that vision."</span>
+          <cite data-en="— IRAQ-IXP CEO, DE-CIX Press Release, April 2025" data-ar="— الرئيس التنفيذي لبورصة العراق، بيان صحفي DE-CIX، أبريل 2025">— IRAQ-IXP CEO, DE-CIX Press Release, April 2025</cite>
+        </div>
+
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:1rem;">
+          <a class="tech-link" href="https://www.de-cix.net/en/locations/iraq" target="_blank" rel="noopener noreferrer" data-en="View live traffic stats ↗" data-ar="إحصاءات البيانات الحية ↗">View live traffic stats ↗</a>
+          <a class="tech-link" href="https://www.peeringdb.com/net/211100" target="_blank" rel="noopener noreferrer" data-en="PeeringDB · AS211100 ↗" data-ar="PeeringDB · AS211100 ↗">PeeringDB · AS211100 ↗</a>
+          <a class="tech-link" href="https://www.de-cix.net/en/locations/iraq" target="_blank" rel="noopener noreferrer" data-en="DE-CIX Baghdad page ↗" data-ar="صفحة DE-CIX بغداد ↗">DE-CIX Baghdad page ↗</a>
+        </div>
+      </div>
+
+      <div class="moat-map">
+        <div style="font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--civi-muted); margin-bottom:1rem;" data-en="Iraq interconnection map" data-ar="خريطة الربط في العراق">Iraq interconnection map</div>
+        <svg viewBox="0 0 300 360" class="iraq-map-svg" xmlns="http://www.w3.org/2000/svg" aria-label="Map of Iraq showing data center locations">
+          <path d="M140,20 L165,18 L180,28 L195,22 L210,35 L215,55 L225,70 L230,95 L220,115 L235,130 L240,155 L230,175 L220,195 L215,220 L200,240 L190,260 L175,275 L160,290 L150,310 L140,320 L130,305 L120,280 L105,265 L95,245 L85,225 L75,205 L70,180 L65,155 L70,130 L80,110 L85,90 L80,70 L90,50 L110,32 Z" fill="rgba(29,104,255,0.12)" stroke="rgba(29,104,255,0.4)" stroke-width="1.5"/>
+          <circle cx="148" cy="145" r="7" fill="var(--civi-blue)" opacity="0.9"/>
+          <circle cx="148" cy="145" r="13" fill="var(--civi-blue)" opacity="0.2"/>
+          <text x="162" y="149" font-family="Montserrat,sans-serif" font-size="9" fill="rgba(255,255,255,0.8)" font-weight="600">Baghdad</text>
+          <text x="162" y="159" font-family="Montserrat,sans-serif" font-size="7.5" fill="rgba(21,191,253,0.85)">IXP · ICG Data Center</text>
+          <circle cx="108" cy="220" r="4" fill="var(--civi-cyan)" opacity="0.7"/>
+          <text x="115" y="224" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Basrah DC</text>
+          <circle cx="168" cy="90" r="4" fill="var(--civi-cyan)" opacity="0.7"/>
+          <text x="175" y="94" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Kirkuk DC</text>
+          <circle cx="105" cy="105" r="4" fill="var(--civi-amber)" opacity="0.7"/>
+          <text x="64" y="102" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.6)">Airport DC</text>
+          <line x1="148" y1="145" x2="108" y2="220" stroke="rgba(21,191,253,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="148" y1="145" x2="168" y2="90" stroke="rgba(21,191,253,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+          <line x1="148" y1="145" x2="105" y2="105" stroke="rgba(21,191,253,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+          <text x="148" y="345" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.3)" text-anchor="middle" font-weight="500">8 border interconnections · 6 provinces</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section-alt" id="solutions">
+    <div class="section-eyebrow" data-en="What we deliver" data-ar="ما نقدمه">What we deliver</div>
+    <div class="section-title" data-en="End-to-end infrastructure,<br>across every layer." data-ar="بنية تحتية متكاملة،<br>عبر كل الطبقات.">End-to-end infrastructure,<br>across every layer.</div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-satellite" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="Satellite Connectivity" data-ar="اتصال الأقمار الصناعية">Satellite Connectivity</div>
+        <div class="service-body" data-en="Managed satellite internet for Iraq's most remote operations — oil fields, government sites, rural areas — with 24/7 NOC support and failover." data-ar="إنترنت عبر الأقمار الصناعية لأكثر المواقع العراقية عزلاً — حقول النفط، المواقع الحكومية، المناطق الريفية — مع دعم مركز العمليات على مدار الساعة.">Managed satellite internet for Iraq's most remote operations — oil fields, government sites, rural areas — with 24/7 NOC support and failover.</div>
+        <a class="service-link" href="#contact" data-en="Explore →" data-ar="استكشف →">Explore →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-network" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="IP Transit &amp; Peering" data-ar="عبور IP والتبادل">IP Transit &amp; Peering</div>
+        <div class="service-body" data-en="Direct access to IRAQ-IXP and global IP transit via Lumen, Telia, and tier-1 carriers. Reduce latency, lower costs, access local content gravity." data-ar="وصول مباشر إلى بورصة العراق وعبور IP العالمي عبر Lumen وTelia وناقلات الدرجة الأولى. تقليل الكمون وخفض التكاليف.">Direct access to IRAQ-IXP and global IP transit via Lumen, Telia, and tier-1 carriers. Reduce latency, lower costs, access local content gravity.</div>
+        <a class="service-link" href="#contact" data-en="Explore →" data-ar="استكشف →">Explore →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-server" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="Data Center &amp; Cloud" data-ar="مراكز البيانات والسحابة">Data Center &amp; Cloud</div>
+        <div class="service-body" data-en="4 Uptime Institute-aligned data centers across Iraq. National data center for the Council of Ministers built in partnership with Huawei." data-ar="4 مراكز بيانات متوافقة مع معهد الوقت التشغيلي في أنحاء العراق. مركز البيانات الوطني لمجلس الوزراء بالشراكة مع هواوي.">4 Uptime Institute-aligned data centers across Iraq. National data center for the Council of Ministers built in partnership with Huawei.</div>
+        <a class="service-link" href="#contact" data-en="Explore →" data-ar="استكشف →">Explore →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-topology-ring-3" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="DWDM &amp; Fiber" data-ar="DWDM والألياف الضوئية">DWDM &amp; Fiber</div>
+        <div class="service-body" data-en="High-capacity DWDM network design and deployment. Optical fiber supply across Iraq and the Middle East, including cross-border infrastructure in Armenia." data-ar="تصميم ونشر شبكات DWDM عالية السعة. توريد الألياف الضوئية في العراق والشرق الأوسط، بما يشمل البنية التحتية العابرة للحدود في أرمينيا.">High-capacity DWDM network design and deployment. Optical fiber supply across Iraq and the Middle East, including cross-border infrastructure in Armenia.</div>
+        <a class="service-link" href="#contact" data-en="Explore →" data-ar="استكشف →">Explore →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-shield-lock" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="IT Security" data-ar="أمن تقنية المعلومات">IT Security</div>
+        <div class="service-body" data-en="Cybersecurity solutions for banks, payment processors, and government entities. Site penetration testing, network hardening, and compliance readiness." data-ar="حلول أمن سيبراني للبنوك ومعالجي المدفوعات والجهات الحكومية. اختبار الاختراق وتصليب الشبكات والامتثال التنظيمي.">Cybersecurity solutions for banks, payment processors, and government entities. Site penetration testing, network hardening, and compliance readiness.</div>
+        <a class="service-link" href="#contact" data-en="Explore →" data-ar="استكشف →">Explore →</a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="ti ti-report-analytics" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="Consulting" data-ar="الاستشارات">Consulting</div>
+        <div class="service-body" data-en="Network design and strategic advisory for ISPs, mobile operators, and data centers. Delivered alongside ADL, KPMG, and PwC on regional projects." data-ar="تصميم الشبكات والاستشارات الاستراتيجية لمزودي الإنترنت والمشغلين والمراكز. بالشراكة مع ADL وKPMG وPwC في المشاريع الإقليمية.">Network design and strategic advisory for ISPs, mobile operators, and data centers. Delivered alongside ADL, KPMG, and PwC on regional projects.</div>
+        <a class="service-link" href="#contact" data-en="Explore →" data-ar="استكشف →">Explore →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STARLINK BAND -->
+  <div class="starlink-band">
+    <div>
+      <div style="font-size:10.5px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--civi-cyan); margin-bottom:0.6rem;" data-en="Satellite connectivity · Coming to Iraq" data-ar="اتصال الأقمار الصناعية · قادم إلى العراق">Satellite connectivity · Coming to Iraq</div>
+      <div class="starlink-title" data-en="Satellite internet for Iraq's<br>hardest-to-reach operations." data-ar="إنترنت الأقمار الصناعية للعمليات<br>الأصعب وصولاً في العراق.">Satellite internet for Iraq's<br>hardest-to-reach operations.</div>
+      <div class="starlink-sub" data-en="Civilization Co. is positioning to deliver managed satellite connectivity across Iraq — with local 24/7 NOC support, professional on-site installation, SLA-backed service, and seamless integration with our IXP for low-latency access to local content." data-ar="شركة الحضارة تتهيأ لتوفير اتصالات الأقمار الصناعية المُدارة في العراق — مع دعم محلي على مدار الساعة، وتركيب ميداني احترافي، وخدمة مضمونة بـ SLA، وتكامل سلس مع بورصتنا لوصول محلي منخفض الكمون.">
+        Civilization Co. is positioning to deliver managed satellite connectivity across Iraq — with local 24/7 NOC support, professional on-site installation, SLA-backed service, and seamless integration with our IXP for low-latency access to local content.
+      </div>
+      <div class="starlink-services">
+        <span class="service-pill"><i class="ti ti-clock" aria-hidden="true" style="font-size:11px;"></i> <span data-en="24/7 NOC monitoring" data-ar="مراقبة مركز العمليات 24/7">24/7 NOC monitoring</span></span>
+        <span class="service-pill" data-en="Professional installation" data-ar="تركيب احترافي">Professional installation</span>
+        <span class="service-pill" data-en="SD-WAN integration" data-ar="تكامل SD-WAN">SD-WAN integration</span>
+        <span class="service-pill" data-en="LTE failover bonding" data-ar="ربط LTE الاحتياطي">LTE failover bonding</span>
+        <span class="service-pill" data-en="Custom billing in IQD" data-ar="فوترة بالدينار العراقي">Custom billing in IQD</span>
+        <span class="service-pill" data-en="Customer portal" data-ar="بوابة العملاء">Customer portal</span>
+      </div>
+    </div>
+    <div class="starlink-cta-col">
+      <div class="starlink-speed">400</div>
+      <span class="starlink-speed-label" data-en="Mbps satellite speeds" data-ar="ميغابت/ثانية سرعات الأقمار">Mbps satellite speeds</span>
+      <button class="btn-hero-primary" style="width:100%;" data-en="Register interest →" data-ar="سجّل اهتمامك →">Register interest →</button>
+      <div style="font-size:10px; color:var(--civi-muted); margin-top:8px;" data-en="Oil &amp; gas · Government · NGOs · Remote sites" data-ar="نفط وغاز · حكومة · منظمات · مواقع نائية">Oil &amp; gas · Government · NGOs · Remote sites</div>
+    </div>
+  </div>
+
+  <!-- INDUSTRIES -->
+  <section class="section" id="industries">
+    <div class="section-eyebrow" data-en="Industries we serve" data-ar="القطاعات التي نخدمها">Industries we serve</div>
+    <div class="section-title" data-en="Built for Iraq's<br>most demanding sectors." data-ar="مصمم لأكثر<br>قطاعات العراق تطلباً.">Built for Iraq's<br>most demanding sectors.</div>
+    <div class="industries-grid">
+      <div class="industry-card">
+        <i class="ti ti-flame industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="Oil &amp; Gas" data-ar="النفط والغاز">Oil &amp; Gas</div>
+        <div class="industry-desc" data-en="Connectivity for remote fields and offshore operations" data-ar="اتصالات لحقول النفط النائية والعمليات البحرية">Connectivity for remote fields and offshore operations</div>
+      </div>
+      <div class="industry-card">
+        <i class="ti ti-building-bank industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="Banking &amp; Finance" data-ar="البنوك والمال">Banking &amp; Finance</div>
+        <div class="industry-desc" data-en="Secure MPLS, data centers, and penetration testing" data-ar="MPLS آمن ومراكز بيانات واختبار اختراق">Secure MPLS, data centers, and penetration testing</div>
+      </div>
+      <div class="industry-card">
+        <i class="ti ti-building-community industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="Government" data-ar="الحكومة">Government</div>
+        <div class="industry-desc" data-en="National data centers and e-governance infrastructure" data-ar="مراكز البيانات الوطنية وبنية الحكومة الرقمية">National data centers and e-governance infrastructure</div>
+      </div>
+      <div class="industry-card">
+        <i class="ti ti-wifi industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="ISP &amp; Carriers" data-ar="مزودو الإنترنت والناقلون">ISP &amp; Carriers</div>
+        <div class="industry-desc" data-en="IP transit, peering, and IXP access for operators" data-ar="عبور IP والتبادل والوصول إلى البورصة للمشغلين">IP transit, peering, and IXP access for operators</div>
+      </div>
+      <div class="industry-card">
+        <i class="ti ti-heart-rate-monitor industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="Healthcare" data-ar="الرعاية الصحية">Healthcare</div>
+        <div class="industry-desc" data-en="Structured cabling and connectivity for hospitals" data-ar="كابلات منظمة واتصالات للمستشفيات">Structured cabling and connectivity for hospitals</div>
+      </div>
+      <div class="industry-card">
+        <i class="ti ti-building-skyscraper industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="Construction &amp; Real Estate" data-ar="الإنشاء والعقارات">Construction &amp; Real Estate</div>
+        <div class="industry-desc" data-en="Site connectivity and smart building infrastructure" data-ar="اتصالات المواقع وبنية المباني الذكية">Site connectivity and smart building infrastructure</div>
+      </div>
+      <div class="industry-card">
+        <i class="ti ti-globe industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="NGOs &amp; International Orgs" data-ar="المنظمات الدولية">NGOs &amp; International Orgs</div>
+        <div class="industry-desc" data-en="Reliable connectivity for humanitarian operations" data-ar="اتصالات موثوقة للعمليات الإنسانية">Reliable connectivity for humanitarian operations</div>
+      </div>
+      <div class="industry-card">
+        <i class="ti ti-school industry-icon" aria-hidden="true"></i>
+        <div class="industry-name" data-en="Education" data-ar="التعليم">Education</div>
+        <div class="industry-desc" data-en="Internet infrastructure for universities and institutions" data-ar="بنية إنترنت للجامعات والمؤسسات التعليمية">Internet infrastructure for universities and institutions</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="partners-section section-alt" id="partners">
+    <div class="partners-label" data-en="Our partnership ecosystem" data-ar="منظومة شراكاتنا">Our partnership ecosystem</div>
+    <div class="partners-row">
+      <div class="partners-tier-label" data-en="Strategic" data-ar="استراتيجي">Strategic</div>
+      <div class="partners-logos">
+        <span class="partner-chip strategic">DE-CIX · <span data-en="Strategic Partner" data-ar="شريك استراتيجي">Strategic Partner</span></span>
+        <span class="partner-chip strategic">Huawei · <span data-en="Value Added Partner" data-ar="شريك ذو قيمة مضافة">Value Added Partner</span></span>
+        <span class="partner-chip strategic">ITPC</span>
+      </div>
+    </div>
+    <div class="partners-row">
+      <div class="partners-tier-label" data-en="Technology" data-ar="التقنية">Technology</div>
+      <div class="partners-logos">
+        <span class="partner-chip golden">Xfusion · <span data-en="Golden Partner" data-ar="شريك ذهبي">Golden Partner</span></span>
+        <span class="partner-chip">Palo Alto Networks</span>
+        <span class="partner-chip">F5</span>
+        <span class="partner-chip">Proofpoint</span>
+        <span class="partner-chip">SolarWinds</span>
+      </div>
+    </div>
+    <div class="partners-row">
+      <div class="partners-tier-label" data-en="Carriers &amp; Exchanges" data-ar="الناقلون والبورصات">Carriers &amp; Exchanges</div>
+      <div class="partners-logos">
+        <span class="partner-chip">Lumen / Level 3</span>
+        <span class="partner-chip">Telia</span>
+        <span class="partner-chip">Telepoint</span>
+        <span class="partner-chip">UAE-IX</span>
+        <span class="partner-chip">BIX</span>
+      </div>
+    </div>
+    <div class="certs-row">
+      <div class="cert-badge">
+        <div class="cert-icon"><i class="ti ti-certificate" aria-hidden="true"></i></div>
+        <div>
+          <div class="cert-name">ISO 27001</div>
+          <div class="cert-desc" data-en="Information Security Management" data-ar="إدارة أمن المعلومات">Information Security Management</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon"><i class="ti ti-rosette" aria-hidden="true"></i></div>
+        <div>
+          <div class="cert-name">ISO 9001</div>
+          <div class="cert-desc" data-en="Quality Management System" data-ar="نظام إدارة الجودة">Quality Management System</div>
+        </div>
+      </div>
+      <div class="cert-badge">
+        <div class="cert-icon"><i class="ti ti-building-skyscraper" aria-hidden="true"></i></div>
+        <div>
+          <div class="cert-name">Uptime Institute</div>
+          <div class="cert-desc" data-en="Data center design standards" data-ar="معايير تصميم مراكز البيانات">Data center design standards</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-eyebrow" data-en="Proven delivery" data-ar="إنجازات موثقة">Proven delivery</div>
+    <div class="section-title" data-en="Projects that built<br>Iraq's digital foundation." data-ar="مشاريع أرست<br>الأساس الرقمي للعراق.">Projects that built<br>Iraq's digital foundation.</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-img"><i class="ti ti-exchange" aria-hidden="true"></i></div>
+        <div class="project-body">
+          <span class="project-tag" data-en="IXP · Nationwide" data-ar="بورصة الإنترنت · على مستوى البلاد">IXP · Nationwide</span>
+          <div class="project-title" data-en="IRAQ-IXP powered by DE-CIX" data-ar="بورصة العراق للإنترنت مدعومة بـ DE-CIX">IRAQ-IXP powered by DE-CIX</div>
+          <div class="project-desc" data-en="Iraq's first neutral Internet Exchange. 8 exchange points across 6 provinces. 3rd-largest IX in the Middle East within one year of launch." data-ar="أول بورصة إنترنت محايدة في العراق. 8 نقاط تبادل عبر 6 محافظات. ثالث أكبر بورصة في الشرق الأوسط خلال عام.">Iraq's first neutral Internet Exchange. 8 exchange points across 6 provinces. 3rd-largest IX in the Middle East within one year of launch.</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="ti ti-server-2" aria-hidden="true"></i></div>
+        <div class="project-body">
+          <span class="project-tag" data-en="Data Center · Baghdad" data-ar="مركز بيانات · بغداد">Data Center · Baghdad</span>
+          <div class="project-title" data-en="National Data Center — Council of Ministers" data-ar="مركز البيانات الوطني — مجلس الوزراء">National Data Center — Council of Ministers</div>
+          <div class="project-desc" data-en="Huawei prefabricated data center for Iraq's General Secretariat. Underpins the national digital transformation and e-governance programme." data-ar="مركز بيانات جاهز من هواوي للأمانة العامة للحكومة العراقية. يدعم التحول الرقمي والحكومة الإلكترونية الوطنية.">Huawei prefabricated data center for Iraq's General Secretariat. Underpins the national digital transformation and e-governance programme.</div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-img"><i class="ti ti-building-bank" aria-hidden="true"></i></div>
+        <div class="project-body">
+          <span class="project-tag" data-en="Banking · Multi-site" data-ar="البنوك · متعدد المواقع">Banking · Multi-site</span>
+          <div class="project-title" data-en="Iraqi Bank Data Centers &amp; MPLS" data-ar="مراكز بيانات المصارف العراقية وشبكات MPLS">Iraqi Bank Data Centers &amp; MPLS</div>
+          <div class="project-desc" data-en="Secure data centers and MPLS-interconnected banking networks for multiple Iraqi banks, including cross-border links to Amman, Jordan." data-ar="مراكز بيانات آمنة وشبكات مصرفية مرتبطة بـ MPLS لعدة مصارف عراقية، بما فيها روابط عابرة للحدود إلى عمّان، الأردن.">Secure data centers and MPLS-interconnected banking networks for multiple Iraqi banks, including cross-border links to Amman, Jordan.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CIVI -->
+  <section class="section section-alt" id="about-why">
+    <div class="section-eyebrow" data-en="Why Civilization Co." data-ar="لماذا شركة الحضارة">Why Civilization Co.</div>
+    <div class="section-title" data-en="Three reasons we are<br>Iraq's infrastructure partner." data-ar="ثلاثة أسباب نكون بها<br>شريك البنية التحتية في العراق.">Three reasons we are<br>Iraq's infrastructure partner.</div>
+    <div class="pillar-grid" style="grid-template-columns: repeat(3,1fr); margin-top:2rem; gap:16px;">
+      <div style="background:var(--civi-card); border:0.5px solid var(--civi-border); border-radius:12px; padding:1.4rem;">
+        <div class="service-icon"><i class="ti ti-topology-star" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="Network mastery" data-ar="إتقان الشبكات">Network mastery</div>
+        <div class="service-body" data-en="Founded by engineers who built interconnect infrastructure across Turkey, Armenia, and the UAE. We operate the networks we sell." data-ar="أسسها مهندسون بنوا بنية الربط الشبكي في تركيا وأرمينيا والإمارات. نحن ندير الشبكات التي نبيعها.">Founded by engineers who built interconnect infrastructure across Turkey, Armenia, and the UAE. We operate the networks we sell.</div>
+      </div>
+      <div style="background:var(--civi-card); border:0.5px solid var(--civi-border); border-radius:12px; padding:1.4rem;">
+        <div class="service-icon"><i class="ti ti-handshake" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="Proven partnerships" data-ar="شراكات مثبتة">Proven partnerships</div>
+        <div class="service-body" data-en="Strategic agreements with DE-CIX, Huawei, and tier-1 carriers. ADL, KPMG, and PwC co-delivery track record. ISO 27001 &amp; 9001 certified." data-ar="اتفاقيات استراتيجية مع DE-CIX وهواوي وناقلات الدرجة الأولى. سجل حافل في التنفيذ المشترك مع ADL وKPMG وPwC. معتمدون ISO 27001 و9001.">Strategic agreements with DE-CIX, Huawei, and tier-1 carriers. ADL, KPMG, and PwC co-delivery track record. ISO 27001 &amp; 9001 certified.</div>
+      </div>
+      <div style="background:var(--civi-card); border:0.5px solid var(--civi-border); border-radius:12px; padding:1.4rem;">
+        <div class="service-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+        <div class="service-title" data-en="Iraq-first delivery" data-ar="تسليم العراق أولاً">Iraq-first delivery</div>
+        <div class="service-body" data-en="Headquartered in Baghdad since 2021. On-the-ground engineering teams across all Iraqi regions. Financial strength backed by banking partnerships." data-ar="مقرها الرئيسي في بغداد منذ 2021. فرق هندسية ميدانية في جميع مناطق العراق. قوة مالية مدعومة بشراكات مصرفية.">Headquartered in Baghdad since 2021. On-the-ground engineering teams across all Iraqi regions. Financial strength backed by banking partnerships.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band">
+    <h2 data-en="Ready to connect Iraq<br>to the world?" data-ar="جاهز لربط العراق<br>بالعالم؟">Ready to connect Iraq<br>to the world?</h2>
+    <p data-en="Whether you need enterprise connectivity, satellite services, IXP peering, or a strategic infrastructure partner — talk to our team." data-ar="سواء احتجت إلى اتصالات للمؤسسات، أو خدمات الأقمار الصناعية، أو التبادل في البورصة، أو شريك بنية تحتية استراتيجي — تحدث مع فريقنا.">Whether you need enterprise connectivity, satellite services, IXP peering, or a strategic infrastructure partner — talk to our team.</p>
+    <div class="cta-buttons">
+      <button class="btn-hero-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" data-en="Talk to an expert →" data-ar="تحدث مع خبير →">Talk to an expert →</button>
+      <button class="btn-outline" onclick="document.getElementById('ixp').scrollIntoView({behavior:'smooth'})" data-en="Join IRAQ-IXP" data-ar="انضم إلى البورصة">Join IRAQ-IXP</button>
+      <a href="#" download class="btn-outline" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px;" data-en="Download company profile" data-ar="تحميل ملف الشركة">
+        <i class="ti ti-download" style="font-size:14px;" aria-hidden="true"></i>
+        <span data-en="Download company profile" data-ar="تحميل ملف الشركة">Download company profile</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="section-eyebrow" data-en="Get in touch" data-ar="تواصل معنا">Get in touch</div>
+    <div class="section-title" data-en="Find us in Baghdad." data-ar="نحن في بغداد.">Find us in Baghdad.</div>
+    <div class="contact-layout">
+      <!-- Contact info cards -->
+      <div class="contact-cards">
+        <div class="contact-card">
+          <i class="ti ti-map-pin contact-icon" aria-hidden="true"></i>
+          <div class="contact-label" data-en="Address" data-ar="العنوان">Address</div>
+          <div class="contact-value" data-en="Al-Muthanna District<br>Baghdad, Iraq" data-ar="حي المثنى<br>بغداد، العراق">Al-Muthanna District<br>Baghdad, Iraq</div>
+        </div>
+        <div class="contact-card">
+          <i class="ti ti-phone contact-icon" aria-hidden="true"></i>
+          <div class="contact-label" data-en="Phone" data-ar="الهاتف">Phone</div>
+          <div class="contact-value">+964 774 400 5518<br>+964 784 400 5518</div>
+        </div>
+        <div class="contact-card">
+          <i class="ti ti-mail contact-icon" aria-hidden="true"></i>
+          <div class="contact-label" data-en="Email" data-ar="البريد الإلكتروني">Email</div>
+          <div class="contact-value"><a href="mailto:info@civitelecom.com" style="color:inherit; text-decoration:none;">info@civitelecom.com</a></div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="contact-form-wrap">
+        <div class="form-title" data-en="Send us a message" data-ar="أرسل لنا رسالة">Send us a message</div>
+        <form action="mailto:info@civitelecom.com" method="post" enctype="text/plain" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name" data-en="Name" data-ar="الاسم">Name</label>
+              <input type="text" id="f-name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="f-company" data-en="Company" data-ar="الشركة">Company</label>
+              <input type="text" id="f-company" name="company" placeholder="Your organisation">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-email" data-en="Email" data-ar="البريد الإلكتروني">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="you@company.com" required>
+          </div>
+          <div class="form-group">
+            <label for="f-service" data-en="Service Interest" data-ar="الخدمة المطلوبة">Service Interest</label>
+            <select id="f-service" name="service">
+              <option value="" data-en="Select a service..." data-ar="اختر خدمة...">Select a service...</option>
+              <option value="ixp" data-en="IXP Peering" data-ar="تبادل البورصة">IXP Peering</option>
+              <option value="satellite" data-en="Satellite Connectivity" data-ar="اتصال الأقمار الصناعية">Satellite Connectivity</option>
+              <option value="enterprise" data-en="Enterprise" data-ar="المؤسسات">Enterprise</option>
+              <option value="datacenter" data-en="Data Center" data-ar="مراكز البيانات">Data Center</option>
+              <option value="other" data-en="Other" data-ar="أخرى">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-message" data-en="Message" data-ar="الرسالة">Message</label>
+            <textarea id="f-message" name="message" placeholder="Tell us about your requirements..."></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn" data-en="Send Message" data-ar="إرسال الرسالة">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="civi-footer">
+    <div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <div class="civi-logo-mark" style="width:28px;height:28px;font-size:10px;">CC</div>
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.02em;">Civilization Co.</span>
+      </div>
+      <div class="footer-copy">
+        <span data-en="Civilization Co. for IT, Telecom &amp; Internet Services LLC" data-ar="شركة الحضارة لتقنية المعلومات والاتصالات وخدمات الإنترنت">Civilization Co. for IT, Telecom &amp; Internet Services LLC</span><br>
+        <span data-en="Baghdad, Iraq · Founded 2021 · ISO 27001 · ISO 9001" data-ar="بغداد، العراق · تأسست 2021 · ISO 27001 · ISO 9001">Baghdad, Iraq · Founded 2021 · ISO 27001 · ISO 9001</span><br>
+        <span data-en="© 2025 Civilization Co. All rights reserved." data-ar="© 2025 شركة الحضارة. جميع الحقوق محفوظة.">© 2025 Civilization Co. All rights reserved.</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a>
+      <a href="#ixp" data-en="IRAQ-IXP" data-ar="بورصة العراق">IRAQ-IXP</a>
+      <a href="https://www.peeringdb.com/net/211100" target="_blank" rel="noopener noreferrer">PeeringDB</a>
+      <button class="footer-lang-btn" id="footerLangToggle" data-en-label="عربي" data-ar-label="EN">EN · عربي</button>
+    </div>
+  </footer>
+
+</div><!-- end .civi-root -->
+
+<script>
+  /* ============================================================
+     LANGUAGE TOGGLE
+  ============================================================ */
+  let currentLang = 'en';
+
+  function applyLang(lang) {
+    currentLang = lang;
+    const html = document.documentElement;
+
+    if (lang === 'ar') {
+      html.setAttribute('lang', 'ar');
+      html.setAttribute('dir', 'rtl');
+    } else {
+      html.setAttribute('lang', 'en');
+      html.setAttribute('dir', 'ltr');
+    }
+
+    // Swap all data-en / data-ar text nodes
+    document.querySelectorAll('[data-en][data-ar]').forEach(el => {
+      const txt = el.getAttribute('data-' + lang);
+      if (txt !== null) {
+        // Use innerHTML only for elements that contain HTML entities / br tags
+        if (txt.includes('<') || txt.includes('&')) {
+          el.innerHTML = txt;
+        } else {
+          el.textContent = txt;
+        }
+      }
+    });
+
+    // Handle section-title innerHTML (they have <br> inside)
+    document.querySelectorAll('.section-title[data-ar], .starlink-title[data-ar]').forEach(el => {
+      const txt = el.getAttribute('data-' + lang);
+      if (txt) el.innerHTML = txt;
+    });
+
+    // Update lang toggle button label
+    const langBtn = document.getElementById('langToggle');
+    if (lang === 'ar') {
+      langBtn.textContent = 'EN';
+    } else {
+      langBtn.textContent = 'عـربي';
+    }
+
+    // Update footer lang button
+    const footerBtn = document.getElementById('footerLangToggle');
+    if (footerBtn) {
+      footerBtn.textContent = lang === 'ar' ? 'EN · English' : 'EN · عربي';
+    }
+
+    // Update form placeholders
+    const placeholders = {
+      'f-name': { en: 'Your full name', ar: 'اسمك الكامل' },
+      'f-company': { en: 'Your organisation', ar: 'مؤسستك' },
+      'f-email': { en: 'you@company.com', ar: 'بريدك@شركتك.com' },
+      'f-message': { en: 'Tell us about your requirements...', ar: 'أخبرنا عن متطلباتك...' },
+    };
+    Object.entries(placeholders).forEach(([id, texts]) => {
+      const el = document.getElementById(id);
+      if (el) el.placeholder = texts[lang];
+    });
+  }
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'ar' : 'en');
+  });
+
+  document.getElementById('footerLangToggle').addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'ar' : 'en');
+  });
+
+
+  /* ============================================================
+     HAMBURGER MENU
+  ============================================================ */
+  const hamburger = document.getElementById('navHamburger');
+  const navLinks  = document.getElementById('navLinks');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+
+  /* ============================================================
+     ACTIVE NAV HIGHLIGHTING ON SCROLL
+  ============================================================ */
+  const sections = ['about', 'ixp', 'solutions', 'industries', 'projects', 'partners', 'contact'];
+  const navAnchors = document.querySelectorAll('.civi-nav-links a[href^="#"]');
+
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 80 && rect.bottom > 80) {
+        current = id;
+      }
+    });
+
+    navAnchors.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) {
+        a.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+
+  /* ============================================================
+     STAT COUNTER ANIMATION
+  ============================================================ */
+  let statsAnimated = false;
+
+  function animateStats() {
+    if (statsAnimated) return;
+    statsAnimated = true;
+
+    document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-target'), 10);
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = 1400;
+      const step = 16;
+      const steps = Math.ceil(duration / step);
+      let current = 0;
+      const increment = target / steps;
+
+      const timer = setInterval(() => {
+        current = Math.min(current + increment, target);
+        el.textContent = Math.floor(current) + suffix;
+        if (current >= target) clearInterval(timer);
+      }, step);
+    });
+  }
+
+  const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) animateStats();
+    });
+  }, { threshold: 0.3 });
+
+  const statsStrip = document.getElementById('statsStrip');
+  if (statsStrip) statsObs.observe(statsStrip);
+</script>
+
+</body>
+</html>
